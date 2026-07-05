@@ -1,0 +1,8 @@
+<Files ".htpasswd">
+  Require all denied
+</Files>
+
+AuthType Basic
+AuthName "CareScotland Admin"
+AuthUserFile "/Users/wellis/Desktop/Cursor/service-directory/admin/.htpasswd"
+Require valid-user

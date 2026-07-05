@@ -1,0 +1,30 @@
+Options -Indexes
+RewriteEngine On
+RewriteBase /
+
+# Front controller: directory index → public app
+RewriteRule ^$ public/index.php [L,QSA]
+
+RewriteRule ^councils/?$ public/councils-map.php [L,QSA]
+
+RewriteRule ^insights/?$ public/insights.php [L,QSA]
+
+RewriteRule ^news/?$ public/news.php [L,QSA]
+
+RewriteRule ^complaints/?$ public/complaints.php [L,QSA]
+
+RewriteRule ^complaints-metrics/?$ public/complaints-metrics.php [L,QSA]
+
+RewriteRule ^service/([A-Za-z0-9]+)/[a-z0-9\-]+/?$ public/service.php?cs=$1 [L,QSA]
+
+RewriteRule ^provider/([A-Za-z0-9]+)/[a-z0-9\-]+/?$ public/provider.php?sp=$1 [L,QSA]
+
+RewriteRule ^provider/claim\.php$ portal/claim.php [L,QSA]
+
+RewriteRule ^\.env$ - [F,L]
+RewriteRule ^config\.php$  - [F,L]
+RewriteRule ^includes/     - [F,L]
+RewriteRule ^cron/         - [F,L]
+RewriteRule ^sql/          - [F,L]
+RewriteRule ^import/       - [F,L]
+RewriteRule ^storage/      - [F,L]
