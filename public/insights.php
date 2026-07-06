@@ -417,9 +417,11 @@ $title = 'Insights & comparisons | CareScotland';
 <footer class="site-footer site-footer--compact">
   <div class="container">
     <p>Care Inspectorate open data (OGL). Charts are indicative; confirm grades on inspection reports.</p>
+    <p class="site-footer__legal"><a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></p>
     <p class="site-footer__admin"><a href="/admin/imports.php">Admin</a></p>
   </div>
 </footer>
 
+<script src="/assets/js/cookie-banner.js" defer></script>
 </body>
 </html>

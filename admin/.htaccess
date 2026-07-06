@@ -4,5 +4,5 @@
 
 AuthType Basic
 AuthName "CareScotland Admin"
-AuthUserFile "/Users/wellis/Desktop/Cursor/service-directory/admin/.htpasswd"
+AuthUserFile "/home/u248320297/domains/papayawhip-mule-276821.hostingersite.com/public_html/admin/.htpasswd"
 Require valid-user

@@ -15,6 +15,10 @@ RewriteRule ^complaints/?$ public/complaints.php [L,QSA]
 
 RewriteRule ^complaints-metrics/?$ public/complaints-metrics.php [L,QSA]
 
+RewriteRule ^terms/?$ public/terms.php [L,QSA]
+
+RewriteRule ^privacy/?$ public/privacy.php [L,QSA]
+
 RewriteRule ^service/([A-Za-z0-9]+)/[a-z0-9\-]+/?$ public/service.php?cs=$1 [L,QSA]
 
 RewriteRule ^provider/([A-Za-z0-9]+)/[a-z0-9\-]+/?$ public/provider.php?sp=$1 [L,QSA]

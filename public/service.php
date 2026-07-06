@@ -39,8 +39,9 @@ if (!empty($service['grade_published'])) {
 }
 $inspection_reports = get_ci_inspection_reports($service['cs_number']);
 $grade_history      = get_ci_quality_grades($service['cs_number']);
-$complaints         = get_ci_complaints($service['cs_number']);
+$complaints         = get_complaints_from_db($service['cs_number']);
 $comparisons        = get_service_comparisons($service, db());
+$sibling_registrations = get_sibling_registrations($service, db());
 
 // Build chart data — combine old+new frameworks into a single timeline, oldest first
 $chart_points = [];
@@ -445,6 +446,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_enquiry'])) {
           <?php endforeach; ?>
         </tbody>
       </table>
+      <?php elseif ((int) ($service['complaints_upheld'] ?? 0) > 0): ?>
+      <p class="grade-date-note">
+        The Care Inspectorate's published data shows <strong><?= (int) $service['complaints_upheld'] ?> upheld complaint<?= (int) $service['complaints_upheld'] === 1 ? '' : 's' ?></strong> for this service, but detailed case records aren't available here right now.
+        <a href="https://www.careinspectorate.com/index.php/care-services?detail=<?= h($service['cs_number']) ?>" target="_blank" rel="noopener">Check the Care Inspectorate website</a> for full details.
+      </p>
       <?php else: ?>
       <p class="grade-date-note" style="color:#2e7d32;">✓ No complaints found for this service in the Care Inspectorate records.</p>
       <?php endif; ?>
@@ -526,6 +532,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_enquiry'])) {
         <?php endif; ?>
       </dl>
     </section>
+
+    <!-- Other registrations at this address (same provider, same postcode) -->
+    <?php if ($sibling_registrations): ?>
+    <section class="profile-section">
+      <h2>Other registrations at this address</h2>
+      <p class="sibling-note">The Care Inspectorate registers each type of care service separately, even when it's delivered by the same team from the same address. This provider also runs:</p>
+      <ul class="sibling-list">
+        <?php foreach ($sibling_registrations as $sib): ?>
+          <li>
+            <a href="/service/<?= h($sib['cs_number']) ?>/<?= slug($sib['service_name']) ?>"><?= h($sib['service_name']) ?></a>
+            <span class="fact-hint"> — <?= h($sib['care_service']) ?><?= $sib['subtype'] ? ' (' . h($sib['subtype']) . ')' : '' ?></span>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+    </section>
+    <?php endif; ?>
 
     <!-- Vacancies (premium only) -->
     <?php if (in_array($tier, ['premium','pro']) && $service['vacancy_count'] !== null): ?>
@@ -629,9 +651,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_enquiry'])) {
 <footer class="site-footer">
   <div class="container">
     <p>Data from the <a href="https://www.careinspectorate.com">Care Inspectorate</a> (Open Government Licence). <a href="https://www.careinspectorate.com/index.php/care-services?detail=<?= h($service['cs_number']) ?>" rel="noopener" target="_blank">View official record for <?= h($service['cs_number']) ?></a>.</p>
+    <p class="site-footer__legal"><a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></p>
     <p class="site-footer__admin"><a href="/admin/imports.php">Admin</a></p>
   </div>
 </footer>
 
+<script src="/assets/js/cookie-banner.js" defer></script>
 </body>
 </html>

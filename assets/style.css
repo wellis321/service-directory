@@ -536,9 +536,60 @@ body.council-map-page {
 
 .site-footer { padding: 1.5rem 0; text-align: center; font-size: 0.82rem; color: #777; border-top: 1px solid #e5e3dc; margin-top: 2rem; background: #fff; }
 .site-footer a { color: #0f6e56; }
+.site-footer__legal { margin-top: 0.6rem; font-size: 0.8rem; color: #999; }
+.site-footer__legal a { color: #777; }
+.site-footer__legal a:hover { color: #0f6e56; }
 .site-footer__admin { margin-top: 0.5rem; font-size: 0.78rem; }
 .site-footer__admin a { color: #aaa; }
 .site-footer__admin a:hover { color: #0f6e56; }
+
+/* ── Legal pages (terms, privacy) ─────────────────────────────── */
+.legal-page { max-width: 720px; padding: 1.5rem 0 3rem; }
+.legal-page h1 { font-size: clamp(1.5rem, 3vw, 1.9rem); margin: 0.5rem 0 0.25rem; }
+.legal-updated { color: #888; font-size: 0.85rem; margin: 0 0 1.75rem; }
+.legal-page h2 { font-size: 1.05rem; margin: 1.75rem 0 0.6rem; color: #0a3d2b; }
+.legal-page p { line-height: 1.65; color: #333; margin: 0 0 0.85rem; }
+.legal-page ul { line-height: 1.65; color: #333; margin: 0 0 0.85rem; padding-left: 1.2rem; }
+.legal-page li { margin-bottom: 0.4rem; }
+.legal-page a { color: #0f6e56; }
+
+/* ── Cookie banner (assets/js/cookie-banner.js) ──────────────── */
+.cookie-banner {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 100;
+  background: #0a3d2b;
+  color: #f0f4f2;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1.5rem;
+  font-size: 0.88rem;
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.12);
+}
+.cookie-banner p { margin: 0; max-width: 46rem; line-height: 1.5; }
+.cookie-banner a { color: #fff; text-decoration: underline; }
+.cookie-banner__btn {
+  flex-shrink: 0;
+  background: #fff;
+  color: #0a3d2b;
+  border: none;
+  padding: 0.55rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+.cookie-banner__btn:hover { background: #e8f5ef; }
+@media (prefers-reduced-motion: no-preference) {
+  .cookie-banner { animation: cookie-banner-in 0.25s ease-out; }
+}
+@keyframes cookie-banner-in {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
 
 .no-results { text-align: center; padding: 3rem; color: #666; }
 
@@ -678,6 +729,13 @@ body.council-map-page {
 .profile-description { margin-bottom: 1rem; }
 
 .fact-hint { font-size: 0.78rem; color: #888; font-weight: 400; }
+
+.sibling-note { font-size: 0.88rem; color: #555; margin: 0 0 0.75rem; line-height: 1.5; }
+.sibling-list { list-style: none; margin: 0; padding: 0; }
+.sibling-list li { padding: 0.5rem 0; border-top: 1px solid #f0ede8; font-size: 0.92rem; }
+.sibling-list li:first-child { border-top: none; }
+.sibling-list a { color: #0f6e56; font-weight: 600; text-decoration: none; }
+.sibling-list a:hover { text-decoration: underline; }
 
 /* Provider overview (/provider/{sp}/{slug}) */
 .provider-overview { padding: 1rem 0 3rem; }

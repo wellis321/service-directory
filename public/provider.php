@@ -1084,9 +1084,11 @@ $title = $provider_name . ' — All services | CareScotland';
 <footer class="site-footer">
   <div class="container">
     <p>Service data from the <a href="https://www.careinspectorate.com" rel="noopener">Care Inspectorate</a> (Open Government Licence).</p>
+    <p class="site-footer__legal"><a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></p>
     <p class="site-footer__admin"><a href="/admin/imports.php">Admin</a></p>
   </div>
 </footer>
 
+<script src="/assets/js/cookie-banner.js" defer></script>
 </body>
 </html>

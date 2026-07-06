@@ -220,8 +220,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <footer class="site-footer">
   <div class="container">
     <p>CareScotland — helping families find great care in Scotland.</p>
+    <p class="site-footer__legal"><a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></p>
     <p class="site-footer__admin"><a href="/admin/imports.php">Admin</a></p>
   </div>
 </footer>
+<script src="/assets/js/cookie-banner.js" defer></script>
 </body>
 </html>

@@ -83,11 +83,13 @@ $title = 'Council map — pick an area | CareScotland';
 <footer class="site-footer site-footer--compact">
   <div class="container">
     <p>Map © <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>. Service counts from CareScotland listings (active, public).</p>
+    <p class="site-footer__legal"><a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></p>
     <p class="site-footer__admin"><a href="/admin/imports.php">Admin</a></p>
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js" crossorigin></script>
 <script src="/assets/js/council-map.js" defer></script>
+<script src="/assets/js/cookie-banner.js" defer></script>
 </body>
 </html>

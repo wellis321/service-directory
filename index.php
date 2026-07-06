@@ -48,6 +48,16 @@ if ($uri === '/complaints-metrics' || $uri === '/complaints-metrics/') {
     return true;
 }
 
+if ($uri === '/terms' || $uri === '/terms/') {
+    require $root . '/public/terms.php';
+    return true;
+}
+
+if ($uri === '/privacy' || $uri === '/privacy/') {
+    require $root . '/public/privacy.php';
+    return true;
+}
+
 if (preg_match('#^/service/([A-Za-z0-9]+)/[^/]+/?$#', $uri, $m)) {
     $_GET['cs'] = $m[1];
     require $root . '/public/service.php';

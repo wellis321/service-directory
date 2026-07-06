@@ -216,6 +216,31 @@ function get_service(string $cs_number): ?array {
     return $row ?: null;
 }
 
+// Other active, public services from the same provider at the same address —
+// the Care Inspectorate issues a separate CS number per regulated service
+// type, so one team/building can genuinely hold several registrations
+// (e.g. a "Housing Support Service" and a "Support Service" run from the
+// same address). Surfaced on the service page so this reads as normal
+// rather than looking like a duplicate/bug. Requires a non-empty postcode
+// so services with redacted addresses (e.g. childminders) never match.
+function get_sibling_registrations(array $service, PDO $pdo): array {
+    if (empty($service['sp_number']) || empty($service['postcode'])) {
+        return [];
+    }
+    $stmt = $pdo->prepare("
+        SELECT cs_number, service_name, care_service, subtype
+        FROM services
+        WHERE sp_number = ?
+          AND postcode = ?
+          AND cs_number != ?
+          AND service_status = 'Active'
+          AND public_list = 1
+        ORDER BY service_name
+    ");
+    $stmt->execute([$service['sp_number'], $service['postcode'], $service['cs_number']]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 // Send a simple email (PHPMailer recommended for production — this uses mail() for simplicity)
 function send_email(string $to, string $subject, string $body): bool {
     $cfg = load_app_config();
@@ -584,6 +609,26 @@ function _ci_complaints_persist(string $cs_number, array $complaints): void {
     } catch (PDOException) {
         // complaints table may not exist yet — silently skip
     }
+}
+
+/**
+ * Detailed per-case complaint rows for one service, read from the local
+ * `complaints` table rather than live-scraping the Care Inspectorate site.
+ * (The old scrape target, careinspectorate.com's legacy ComplaintsDetails
+ * endpoint, now redirects to careinspectorate.scot and returns HTTP 419 —
+ * it requires a browser session/CSRF token a server-side POST can't
+ * supply, so it always failed silently. Any rows here were captured
+ * before that endpoint broke, or via a future replacement scraper.)
+ */
+function get_complaints_from_db(string $cs_number): array {
+    $stmt = db()->prepare("
+        SELECT case_number, complaint_date AS date, category, outcome
+        FROM complaints
+        WHERE cs_number = ?
+        ORDER BY complaint_date DESC
+    ");
+    $stmt->execute([$cs_number]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 /**
