@@ -99,8 +99,8 @@ $title = 'Find care services in Scotland | CareScotland';
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= h($title) ?></title>
 <meta name="description" content="Search <?= number_format($total_active) ?> registered care services in Scotland. Real inspection grades from the Care Inspectorate — filter by type, location and quality.">
-<link rel="stylesheet" href="/assets/style.css">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="stylesheet" href="<?= asset_url('/assets/style.css') ?>">
+<link rel="icon" type="image/svg+xml" href="<?= asset_url('/assets/favicon.svg') ?>">
 </head>
 <body>
 
@@ -490,12 +490,12 @@ $title = 'Find care services in Scotland | CareScotland';
 
 <footer class="site-footer">
   <div class="container">
-    <p>Service data from the <a href="https://www.careinspectorate.com" rel="noopener">Care Inspectorate</a> (Open Government Licence) · Updated monthly</p>
+    <p>Service data from the <a href="https://www.careinspectorate.scot" rel="noopener">Care Inspectorate</a> (Open Government Licence) · Updated monthly</p>
     <p class="site-footer__legal"><a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></p>
     <p class="site-footer__admin"><a href="/admin/imports.php">Admin</a></p>
   </div>
 </footer>
 
-<script src="/assets/js/cookie-banner.js" defer></script>
+<script src="<?= asset_url('/assets/js/cookie-banner.js') ?>" defer></script>
 </body>
 </html>

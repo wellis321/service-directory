@@ -101,8 +101,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_enquiry'])) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= $title ?></title>
 <meta name="description" content="View inspection grades, vacancies and contact details for <?= h($service['service_name']) ?> in <?= h($service['town']) ?>.">
-<link rel="stylesheet" href="/assets/style.css">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="stylesheet" href="<?= asset_url('/assets/style.css') ?>">
+<link rel="icon" type="image/svg+xml" href="<?= asset_url('/assets/favicon.svg') ?>">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js" defer></script>
 </head>
 <body>
@@ -138,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_enquiry'])) {
         <strong>Inspection grades are <?= $grade_age_years ?> years old.</strong>
         These grades are from <?= date('F Y', strtotime($service['grade_published'])) ?> and may no longer reflect the current quality of this service.
         The Care Inspectorate registers it as <strong>Active</strong> but has not published new grades since then.
-        <a href="https://www.careinspectorate.com/index.php/care-services?detail=<?= h($service['cs_number']) ?>" target="_blank" rel="noopener">Check the Care Inspectorate website</a> before making any decisions.
+        <a href="https://www.careinspectorate.scot/find-care/search-for-care/care-services/<?= h($service['cs_number']) ?>" target="_blank" rel="noopener">Check the Care Inspectorate website</a> before making any decisions.
       </div>
     </div>
     <?php elseif ($stale_level === 'old'): ?>
@@ -147,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_enquiry'])) {
       <div>
         <strong>Grades are <?= $grade_age_years ?> years old</strong> (published <?= date('F Y', strtotime($service['grade_published'])) ?>).
         The Care Inspectorate may not have re-inspected this service recently.
-        <a href="https://www.careinspectorate.com/index.php/care-services?detail=<?= h($service['cs_number']) ?>" target="_blank" rel="noopener">View the official record</a> to check for any updates.
+        <a href="https://www.careinspectorate.scot/find-care/search-for-care/care-services/<?= h($service['cs_number']) ?>" target="_blank" rel="noopener">View the official record</a> to check for any updates.
       </div>
     </div>
     <?php elseif ($stale_level === 'warn'): ?>
@@ -156,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_enquiry'])) {
       <div>
         <strong>Grades are <?= $grade_age_years ?> years old</strong> (published <?= date('F Y', strtotime($service['grade_published'])) ?>).
         A more recent inspection may have taken place but not yet appear in our data.
-        <a href="https://www.careinspectorate.com/index.php/care-services?detail=<?= h($service['cs_number']) ?>" target="_blank" rel="noopener">Check the Care Inspectorate website</a> for the latest grades.
+        <a href="https://www.careinspectorate.scot/find-care/search-for-care/care-services/<?= h($service['cs_number']) ?>" target="_blank" rel="noopener">Check the Care Inspectorate website</a> for the latest grades.
       </div>
     </div>
     <?php elseif ($stale_level === 'ungraded'): ?>
@@ -165,7 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_enquiry'])) {
       <div>
         <strong>No inspection grades on record.</strong>
         This service is registered as Active but has no published grades yet — it may be recently registered or awaiting its first inspection.
-        <a href="https://www.careinspectorate.com/index.php/care-services?detail=<?= h($service['cs_number']) ?>" target="_blank" rel="noopener">Check the Care Inspectorate website</a> for the latest status.
+        <a href="https://www.careinspectorate.scot/find-care/search-for-care/care-services/<?= h($service['cs_number']) ?>" target="_blank" rel="noopener">Check the Care Inspectorate website</a> for the latest status.
       </div>
     </div>
     <?php endif; ?>
@@ -449,7 +449,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_enquiry'])) {
       <?php elseif ((int) ($service['complaints_upheld'] ?? 0) > 0): ?>
       <p class="grade-date-note">
         The Care Inspectorate's published data shows <strong><?= (int) $service['complaints_upheld'] ?> upheld complaint<?= (int) $service['complaints_upheld'] === 1 ? '' : 's' ?></strong> for this service, but detailed case records aren't available here right now.
-        <a href="https://www.careinspectorate.com/index.php/care-services?detail=<?= h($service['cs_number']) ?>" target="_blank" rel="noopener">Check the Care Inspectorate website</a> for full details.
+        <a href="https://www.careinspectorate.scot/find-care/search-for-care/care-services/<?= h($service['cs_number']) ?>" target="_blank" rel="noopener">Check the Care Inspectorate website</a> for full details.
       </p>
       <?php else: ?>
       <p class="grade-date-note" style="color:#2e7d32;">✓ No complaints found for this service in the Care Inspectorate records.</p>
@@ -483,7 +483,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_enquiry'])) {
     <?php else: ?>
     <section class="profile-section">
       <h2>Inspection reports</h2>
-      <p class="grade-date-note">No inspection reports are currently available for this service. <a href="https://www.careinspectorate.com/index.php/care-services?detail=<?= h($service['cs_number']) ?>" target="_blank" rel="noopener">Check the Care Inspectorate website</a> for the latest information.</p>
+      <p class="grade-date-note">No inspection reports are currently available for this service. <a href="https://www.careinspectorate.scot/find-care/search-for-care/care-services/<?= h($service['cs_number']) ?>" target="_blank" rel="noopener">Check the Care Inspectorate website</a> for the latest information.</p>
     </section>
     <?php endif; ?>
 
@@ -625,7 +625,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_enquiry'])) {
       <p style="font-size:0.88em;color:#555;margin-bottom:12px;">
         Full inspection reports — including assessments, recommendations and requirements — are published by the Care Inspectorate.
       </p>
-      <a href="https://www.careinspectorate.com/index.php/care-services?detail=<?= h($service['cs_number']) ?>"
+      <a href="https://www.careinspectorate.scot/find-care/search-for-care/care-services/<?= h($service['cs_number']) ?>"
          target="_blank" rel="noopener" class="btn-ci-report">
         View on Care Inspectorate ↗
       </a>
@@ -650,12 +650,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_enquiry'])) {
 
 <footer class="site-footer">
   <div class="container">
-    <p>Data from the <a href="https://www.careinspectorate.com">Care Inspectorate</a> (Open Government Licence). <a href="https://www.careinspectorate.com/index.php/care-services?detail=<?= h($service['cs_number']) ?>" rel="noopener" target="_blank">View official record for <?= h($service['cs_number']) ?></a>.</p>
+    <p>Data from the <a href="https://www.careinspectorate.scot">Care Inspectorate</a> (Open Government Licence). <a href="https://www.careinspectorate.scot/find-care/search-for-care/care-services/<?= h($service['cs_number']) ?>" rel="noopener" target="_blank">View official record for <?= h($service['cs_number']) ?></a>.</p>
     <p class="site-footer__legal"><a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></p>
     <p class="site-footer__admin"><a href="/admin/imports.php">Admin</a></p>
   </div>
 </footer>
 
-<script src="/assets/js/cookie-banner.js" defer></script>
+<script src="<?= asset_url('/assets/js/cookie-banner.js') ?>" defer></script>
 </body>
 </html>

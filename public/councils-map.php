@@ -36,9 +36,9 @@ $title = 'Council map — pick an area | CareScotland';
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= h($title) ?></title>
 <meta name="description" content="Interactive map of Scottish council areas. Choose an area to open matching care services in the CareScotland directory.">
-<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="<?= asset_url('/assets/style.css') ?>">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css" crossorigin>
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" type="image/svg+xml" href="<?= asset_url('/assets/favicon.svg') ?>">
 </head>
 <body class="council-map-page">
 
@@ -89,7 +89,7 @@ $title = 'Council map — pick an area | CareScotland';
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js" crossorigin></script>
-<script src="/assets/js/council-map.js" defer></script>
-<script src="/assets/js/cookie-banner.js" defer></script>
+<script src="<?= asset_url('/assets/js/council-map.js') ?>" defer></script>
+<script src="<?= asset_url('/assets/js/cookie-banner.js') ?>" defer></script>
 </body>
 </html>

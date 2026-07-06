@@ -13,8 +13,8 @@ $title = 'Terms of service | CareScotland';
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= h($title) ?></title>
 <meta name="description" content="Terms of service for using the CareScotland care service directory.">
-<link rel="stylesheet" href="/assets/style.css">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="stylesheet" href="<?= asset_url('/assets/style.css') ?>">
+<link rel="icon" type="image/svg+xml" href="<?= asset_url('/assets/favicon.svg') ?>">
 </head>
 <body>
 
@@ -47,7 +47,7 @@ $title = 'Terms of service | CareScotland';
   <p>CareScotland publishes information about care services registered with the Care Inspectorate, built from the Care Inspectorate's own open data (published under the Open Government Licence). We refresh this data monthly. We are not affiliated with, endorsed by, or acting on behalf of the Care Inspectorate.</p>
 
   <h2>Data accuracy</h2>
-  <p>Inspection grades and service details are only as current as our last data refresh, and the Care Inspectorate's own publication schedule for that service. Some services shown may not have been reinspected recently — where we know this, we show a notice on the service's page. Always check the <a href="https://www.careinspectorate.com" target="_blank" rel="noopener">Care Inspectorate's website</a> directly before making a decision about care, and do not rely solely on information from this site.</p>
+  <p>Inspection grades and service details are only as current as our last data refresh, and the Care Inspectorate's own publication schedule for that service. Some services shown may not have been reinspected recently — where we know this, we show a notice on the service's page. Always check the <a href="https://www.careinspectorate.scot" target="_blank" rel="noopener">Care Inspectorate's website</a> directly before making a decision about care, and do not rely solely on information from this site.</p>
 
   <h2>Using the directory</h2>
   <p>The directory is free to browse and search. Nothing on this site is a recommendation, referral, or endorsement of any specific service or provider — it is a presentation of publicly available regulatory information to help you do your own research.</p>
@@ -79,6 +79,6 @@ $title = 'Terms of service | CareScotland';
     <p class="site-footer__admin"><a href="/admin/imports.php">Admin</a></p>
   </div>
 </footer>
-<script src="/assets/js/cookie-banner.js" defer></script>
+<script src="<?= asset_url('/assets/js/cookie-banner.js') ?>" defer></script>
 </body>
 </html>

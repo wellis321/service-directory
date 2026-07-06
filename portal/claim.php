@@ -87,8 +87,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Claim your listing — CareScotland</title>
-<link rel="stylesheet" href="/assets/style.css">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="stylesheet" href="<?= asset_url('/assets/style.css') ?>">
+<link rel="icon" type="image/svg+xml" href="<?= asset_url('/assets/favicon.svg') ?>">
 </head>
 <body>
 
@@ -169,7 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label class="field-full">CS number (from Care Inspectorate)
           <input type="text" name="cs_number" placeholder="e.g. CS2003000123">
         </label>
-        <p class="field-hint">Find your CS number on the <a href="https://www.careinspectorate.com/index.php/care-services" target="_blank">Care Inspectorate website</a> or search above.</p>
+        <p class="field-hint">Find your CS number on the <a href="https://www.careinspectorate.scot/find-care/search-for-care/care-services" target="_blank">Care Inspectorate website</a> or search above.</p>
       </fieldset>
       <?php endif; ?>
 
@@ -224,6 +224,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <p class="site-footer__admin"><a href="/admin/imports.php">Admin</a></p>
   </div>
 </footer>
-<script src="/assets/js/cookie-banner.js" defer></script>
+<script src="<?= asset_url('/assets/js/cookie-banner.js') ?>" defer></script>
 </body>
 </html>

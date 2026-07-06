@@ -175,8 +175,8 @@ $title = 'Complaints metrics — CareScotland';
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= $title ?></title>
 <meta name="description" content="Complaints per service benchmarking across Scottish care providers. Compare upheld complaint rates like-for-like by service type.">
-<link rel="stylesheet" href="/assets/style.css">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="stylesheet" href="<?= asset_url('/assets/style.css') ?>">
+<link rel="icon" type="image/svg+xml" href="<?= asset_url('/assets/favicon.svg') ?>">
 </head>
 <body>
 
@@ -489,12 +489,12 @@ $title = 'Complaints metrics — CareScotland';
 
 <footer class="site-footer">
   <div class="container">
-    <p>Data from the <a href="https://www.careinspectorate.com">Care Inspectorate</a> (Open Government Licence).</p>
+    <p>Data from the <a href="https://www.careinspectorate.scot">Care Inspectorate</a> (Open Government Licence).</p>
     <p class="site-footer__legal"><a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></p>
     <p class="site-footer__admin"><a href="/admin/imports.php">Admin</a></p>
   </div>
 </footer>
 
-<script src="/assets/js/cookie-banner.js" defer></script>
+<script src="<?= asset_url('/assets/js/cookie-banner.js') ?>" defer></script>
 </body>
 </html>

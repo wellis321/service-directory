@@ -102,8 +102,8 @@ $heading = $council !== '' ? 'Care news — ' . $council : 'Latest care sector n
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= h($title) ?></title>
 <meta name="description" content="Recent press coverage of care providers across Scotland<?= $council !== '' ? ' in ' . h($council) : '' ?>, sourced daily from Google News.">
-<link rel="stylesheet" href="/assets/style.css">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="stylesheet" href="<?= asset_url('/assets/style.css') ?>">
+<link rel="icon" type="image/svg+xml" href="<?= asset_url('/assets/favicon.svg') ?>">
 </head>
 <body>
 
@@ -245,12 +245,12 @@ $heading = $council !== '' ? 'Care news — ' . $council : 'Latest care sector n
 
 <footer class="site-footer site-footer--compact">
   <div class="container">
-    <p>News sourced daily from Google News. Articles link to the original publisher. Service data from the <a href="https://www.careinspectorate.com" rel="noopener">Care Inspectorate</a> (Open Government Licence).</p>
+    <p>News sourced daily from Google News. Articles link to the original publisher. Service data from the <a href="https://www.careinspectorate.scot" rel="noopener">Care Inspectorate</a> (Open Government Licence).</p>
     <p class="site-footer__legal"><a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></p>
     <p class="site-footer__admin"><a href="/admin/imports.php">Admin</a></p>
   </div>
 </footer>
 
-<script src="/assets/js/cookie-banner.js" defer></script>
+<script src="<?= asset_url('/assets/js/cookie-banner.js') ?>" defer></script>
 </body>
 </html>

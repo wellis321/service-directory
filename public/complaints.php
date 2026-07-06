@@ -107,8 +107,8 @@ if ($spName) $title = h($spName) . ' complaints — CareScotland';
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= $title ?></title>
 <meta name="description" content="Browse, search and filter Care Inspectorate complaints across all Scottish care services. See which services have the most upheld complaints.">
-<link rel="stylesheet" href="/assets/style.css">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="stylesheet" href="<?= asset_url('/assets/style.css') ?>">
+<link rel="icon" type="image/svg+xml" href="<?= asset_url('/assets/favicon.svg') ?>">
 </head>
 <body>
 
@@ -331,19 +331,19 @@ if ($spName) $title = h($spName) . ' complaints — CareScotland';
   <p class="complaints-source-note">
     Complaint outcome counts (upheld / not upheld) are sourced from the Care Inspectorate CSV datastore and refreshed monthly.
     Detailed case histories (dates, case numbers, categories) are loaded from the Care Inspectorate website when individual service profiles are viewed.
-    <a href="https://www.careinspectorate.com" rel="noopener" target="_blank">Care Inspectorate ↗</a>
+    <a href="https://www.careinspectorate.scot" rel="noopener" target="_blank">Care Inspectorate ↗</a>
   </p>
 
 </div>
 
 <footer class="site-footer">
   <div class="container">
-    <p>Data from the <a href="https://www.careinspectorate.com">Care Inspectorate</a> (Open Government Licence).</p>
+    <p>Data from the <a href="https://www.careinspectorate.scot">Care Inspectorate</a> (Open Government Licence).</p>
     <p class="site-footer__legal"><a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></p>
     <p class="site-footer__admin"><a href="/admin/imports.php">Admin</a></p>
   </div>
 </footer>
 
-<script src="/assets/js/cookie-banner.js" defer></script>
+<script src="<?= asset_url('/assets/js/cookie-banner.js') ?>" defer></script>
 </body>
 </html>

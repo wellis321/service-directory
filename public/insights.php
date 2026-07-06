@@ -247,10 +247,10 @@ $title = 'Insights & comparisons | CareScotland';
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= h($title) ?></title>
 <meta name="description" content="Charts comparing care services in Scotland by council, service type, and provider (Care Inspectorate open data).">
-<link rel="stylesheet" href="/assets/style.css">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="stylesheet" href="<?= asset_url('/assets/style.css') ?>">
+<link rel="icon" type="image/svg+xml" href="<?= asset_url('/assets/favicon.svg') ?>">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
-<script src="/assets/js/insights-page.js" defer></script>
+<script src="<?= asset_url('/assets/js/insights-page.js') ?>" defer></script>
 </head>
 <body class="insights-page">
 
@@ -422,6 +422,6 @@ $title = 'Insights & comparisons | CareScotland';
   </div>
 </footer>
 
-<script src="/assets/js/cookie-banner.js" defer></script>
+<script src="<?= asset_url('/assets/js/cookie-banner.js') ?>" defer></script>
 </body>
 </html>

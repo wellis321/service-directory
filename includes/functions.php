@@ -15,6 +15,15 @@ function h(?string $s): string {
     return htmlspecialchars($s ?? '', ENT_QUOTES, 'UTF-8');
 }
 
+// Cache-busted URL for a static file under /assets — appends the file's
+// last-modified time as ?v=, so browsers fetch the new version the moment
+// it's deployed instead of serving a stale cached copy.
+function asset_url(string $path): string {
+    $full = (defined('ROOT') ? ROOT : dirname(__DIR__)) . $path;
+    $v = is_file($full) ? filemtime($full) : time();
+    return $path . '?v=' . $v;
+}
+
 // Grade helpers
 function grade_label(int $g): string {
     return match($g) {
